@@ -29,7 +29,7 @@ export const Geo = () => {
 
     return (
         <div>
-            <button type="button" className="bg-black text-white rounded-sm p-3 hover:bg-green-950 place-self-center" id="geobutton" onClick={handleClick}>Location</button>
+            <button type="button" className="bg-black text-white p-3 hover:bg-green-950 place-self-center rounded-lg shadow-2xl" id="geobutton" onClick={handleClick}>Location</button>
             <h2>Longitue: {longitude}</h2>
             <h2>Latitude: {latitude}</h2>
         </div>
