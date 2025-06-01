@@ -37,7 +37,7 @@ export const Geo = ({latitude, setLatitude, longitude, setLongitude, city, setCi
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`,
             {
                 headers: {
-                    'User-Agent': 'YourAppName/1.0'
+                    'User-Agent': 'What-Should-I-Eat/1.0'
                 }
             }
         );
