@@ -12,15 +12,14 @@ export default function Page() {
   const [latitude, setLatitude] = useState(0)
   const [city, setCity] = useState("N/A")
   const [state, setState] = useState("N/A")
-
-  const location = city + " " + state;
+  const location = `${city} ${state}`
 
   return (
     <div className="text-center">
       <h1 className="m-5 text-center transform hover:scale-110 duration-500 items-center">What Should I Eat?</h1>
       <Foods selectedFoods = {selectedFoods} setSelectedFoods = {setSelectedFoods}/>
       <Geo latitude = {latitude} setLatitude = {setLatitude} longitude={longitude} setLongitude={setLongitude} city={city} setCity={setCity} state={state} setState={setState}/>
-      <ReccomendedFoods selectedFoods = {selectedFoods} location={location}/>
+      <ReccomendedFoods selectedFoods = {selectedFoods} city ={location}/>
     </div>
   );
 }
