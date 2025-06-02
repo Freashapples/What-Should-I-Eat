@@ -1,4 +1,5 @@
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 export const ReccomendedFoods = ({selectedFoods, city}) => {
     // items = props.props
@@ -33,23 +34,30 @@ export const ReccomendedFoods = ({selectedFoods, city}) => {
         setLoading(true)
         if(isDisabled){
             setLoading(false)
+            toast.error("Please Wait")
             return
         }
 
         setIsDisabled(true)
+        try {
+            const response = await fetch(url, options)
+            const json = await response.json()
 
-        const response = await fetch(url, options)
-        const json = await response.json()
-
-        setRecomendation(json["choices"][0]["message"]["content"])
-        console.log(city)
-        console.log(selectedFoods)
-        setLoading(false)
-
-        setTimeout(() => {
-            setIsDisabled(false);
+            setRecomendation(json["choices"][0]["message"]["content"])
+            console.log(city)
+            console.log(selectedFoods)
             setLoading(false)
-        }, 5000)
+
+            toast.success("Response Generated!")
+        } catch (error) {
+            toast.error(`Error: ${error}`)
+        } finally {
+            setLoading(false)
+            setTimeout(() => {
+                setIsDisabled(false);
+                setLoading(false)
+            }, 5000)
+        }
     }
 
     return (

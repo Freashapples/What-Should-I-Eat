@@ -1,5 +1,5 @@
 "use client"
-
+import toast from "react-hot-toast";
 import { useState } from "react";
 
 export const Geo = ({latitude, setLatitude, longitude, setLongitude, city, setCity, state, setState}) => {
@@ -24,10 +24,11 @@ export const Geo = ({latitude, setLatitude, longitude, setLongitude, city, setCi
             setCity(c.city)
             setState(c.state)
             setLoading(false);
+            toast.success("Location Successfully set!")
         }
 
         function error(){
-            alert("Error with position")
+            toast.error("Error with position")
             setLoading(false)
         }
     }
